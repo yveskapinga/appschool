@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="{{asset('site/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{{asset('site/assets/css/fontawesome.css')}}">
+        <link rel="stylesheet" href="{{asset('site/assets/css/templatemo-grad-school.css')}}">
+        <link rel="stylesheet" href="{{asset('site/assets/css/owl.css')}}">
+        <link rel="stylesheet" href="{{asset('site/assets/css/lightbox.css')}}">
+        <!--
+            
+        TemplateMo 557 Grad School
+
+        https://templatemo.com/tm-557-grad-school
+
+        -->
+        <title>
+            {% block title %}
+                {% if pageTitle is defined  %}
+                    {{pageTitle}}
+                {% else %}
+                    Welcome!
+                {% endif %}
+            {% endblock %}
+        </title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        
+
+        {% block body %}
+            <!--header-->
+            <header class="main-header clearfix" role="header">
+                <div class="logo">
+                    <a href="#"><em>Man</em>School</a>
+                </div>
+                <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+                <nav id="menu" class="main-nav" role="navigation">
+                    <ul class="main-menu">
+                        <li>
+                            <a href="#section1">Accueil</a>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#section2">A propos de nous</a>
+                            <ul class="sub-menu">
+                                <li><a href="#section2">Qui sommes nous</a></li>
+                                <li><a href="#section3">Ce que nous faisons</a></li>
+                                {# <li><a href="#section3">How it works?</a></li> #}
+                                <li><a href="#" rel="sponsored" class="external">URL Externe</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#section4">Section</a>
+                            <ul class="sub-menu">
+                                <li><a href="#section3">Maternelle</a></li>
+                                <li><a href="#section2">Primaire</a></li>
+                                <li><a href="#section3">Secondaire</a></li>
+                            </ul>
+                        </li>
+                        <!-- <li><a href="#section5">Video</a></li> -->
+                        <li><a href="#section6">Contact</a></li>
+                        <li><a href="{{path('app_manschool')}}" class="external">School app</a></li>
+                    </ul>
+                </nav>
+            </header>
+              <!-- ***** Main Banner Area Start ***** -->
+            <section class="section main-banner" id="top" data-section="section1">
+                <video autoplay muted loop id="bg-video">
+                    <source src="{{asset('site/assets/images/course-video.mp4')}}" type="video/mp4" />
+                </video>
+
+                <div class="video-overlay header-text">
+                    <div class="caption">
+                        <h6>Complexe scolaire</h6>
+                        <h2>LA <em> GRANDEUR</em> </h2>
+                        <div class="main-button">
+                            <div class="scroll-to-section"><a href="#section2">Découvrir plus</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+              <!-- ***** Main Banner Area End ***** -->
+            <section class="features">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                    <div class="features-post">
+                        <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-pencil"></i>Premier titre</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>Nous mettrons ici les détails sur le premier titre</p>
+                            <p class="hidden-sm"></p>
+                            <div class="scroll-to-section"><a href="#section2">Plus d'info</a></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                    <div class="features-post second-features">
+                        <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-graduation-cap"></i>Deuxième titre</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>Nous mettrons ici une brève description du deuxième titre.</p>
+                            <p class="hidden-sm"></p>
+                            <div class="scroll-to-section"><a href="#section3">Plus d'info</a></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                    <div class="features-post third-features">
+                        <div class="features-content">
+                        <div class="content-show">
+                            <h4><i class="fa fa-book"></i>Troisième titre</h4>
+                        </div>
+                        <div class="content-hide">
+                            <p>Nous mettrons ici une brère description du troisième titre</p>
+                            <p class="hidden-sm"></p>
+                            <div class="scroll-to-section"><a href="#section4">Plus d'info</a></div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="section why-us" data-section="section2">
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Pourquoi nous choisir</h2>
+                    </div>
+                    </div>
+                    <div class="col-md-12">
+                    <div id='tabs'>
+                        <ul>
+                        <li><a href='#tabs-1'>Enseignement de qualité</a></li>
+                        <li><a href='#tabs-2'>Personnel qualifié</a></li>
+                        <li><a href='#tabs-3'>Professionnalisme</a></li>
+                        </ul>
+                        <section class='tabs-content'>
+                        <article id='tabs-1'>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <img src="#" alt="">images
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Enseignement de qualité</h4>
+                                <p>
+                                    Nous nous assurons que le programme national est observé et nous veuillons à ce que vos enfants 
+                                    reçoivent une formation de niveau international
+                                    {% block section %}
+                                    {% endblock %}
+                                </p>
+                            </div>
+                            </div>
+                        </article>
+                        <article id='tabs-2'>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <img src="#" alt="Images">images
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Personnel qualifié</h4>
+                                <p>Le corps enseignant est sélectionné avec beaucoup de rigueur afin de n'engager que la crème des crèmes</p> 
+                                <p>Les services administratifs est très professionnel afin d'offrir une meilleure expérience de gestion</p>
+                            </div>
+                            </div>
+                        </article>
+                        <article id='tabs-3'>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <img src="#" alt="">images
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Professionnalisme</h4>
+                                <p> Notre équipe traite toutes les opérations avec beaucoup de professionnaliste pour
+                                vous garantir une expérience parfaite de collaboration
+                                 <a rel="nofollow" href="#" target="_parent">contact TemplateMo</a> now.</p>
+                            </div>
+                            </div>
+                        </article>
+                        </section>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="section coming-soon" data-section="section3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                            <div class="continer centerIt">
+                                <div>
+                                    <h4>Nos différentes  <em>statistiques</em></h4>
+                                    <div class="counter">
+
+                                        <div class="days">
+                                            {# <div class="value">00</div> #}
+                                            <div>80</div>
+                                            <span>Enseignants</span>
+                                        </div>
+
+                                        <div class="hours">
+                                            {# <div class="value">00</div> #}
+                                            <div>140</div>
+                                            <span>Salles</span>
+                                        </div>
+
+                                        <div class="minutes">
+                                            {# <div class="value">00</div> #}
+                                            <div>45</div>
+                                            <span>Administratif</span>
+                                        </div>
+
+                                        <div class="seconds">
+                                            {# <div class="value">00</div> #}
+                                            <div>8</div>
+                                            <span>Filières</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                        <div class="right-content">
+                            <div class="top-content">
+                                <h6>Autre contenu <em>pertinent</em> à placer ici</h6>
+                            </div>
+                            <p>Nous placerons ici d'autres contenus <em>pertinent</em> pour nos visiteurs</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section courses" data-section="section4">
+                <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2></h2>
+                    </div>
+                    </div>
+                    <div class="owl-carousel owl-theme">
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-01.jpg')}}" alt="Course #1">
+                        <div class="down-content">
+                        <h4>Autre lien important</h4>
+                        <p>Autres contenus importants à afficher sur le site internet</p>
+                        <div class="author-image">
+                            <img src="{{asset('site/assets/images/author-01.png')}}" alt="Author 1">
+                        </div>
+                        <div class="text-button-pay">
+                            <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-02.jpg')}}" alt="Course #2">
+                        <div class="down-content">
+                          <h4>Autre lien important</h4>
+                          <p>Autres contenus importants à afficher sur le site internet</p>
+                          <div class="author-image">
+                              <img src="{{asset('site/assets/images/author-02.png')}}" alt="Author 2">
+                          </div>
+                          <div class="text-button-free">
+                              <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-03.jpg')}}" alt="Course #3">
+                        <div class="down-content">
+                          <h4>Autre lien important</h4>
+                          <p>Autres contenus importants à afficher sur le site internet</p>
+                          <div class="author-image">
+                              <img src="{{asset('site/assets/images/author-03.png')}}" alt="Author 3">
+                          </div>
+                          <div class="text-button-pay">
+                              <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-04.jpg')}}" alt="Course #4">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                            <div class="author-image">
+                                <img src="{{asset('site/assets/images/author-04.png')}}" alt="Author 4">
+                            </div>
+                            <div class="text-button-free">
+                                <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-05.jpg')}}" alt="">
+                        <div class="down-content">
+                          <h4>Autre lien important</h4>
+                          <p>Autres contenus importants à afficher sur le site internet</p>
+                          <div class="author-image">
+                              <img src="{{asset('site/assets/images/author-05.png')}}" alt="">
+                          </div>
+                          <div class="text-button-pay">
+                              <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-01.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                            <div class="author-image">
+                                <img src="{{asset('site/assets/images/author-01.png')}}" alt="">
+                            </div>
+                            <div class="text-button-free">
+                                <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-02.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                        <div class="author-image">
+                            <img src="{{asset('site/assets/images/author-02.png')}}" alt="">
+                        </div>
+                        <div class="text-button-free">
+                            <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-03.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                        <div class="author-image">
+                            <img src="{{asset('site/assets/images/author-03.png')}}" alt="">
+                        </div>
+                        <div class="text-button-pay">
+                            <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-04.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                            <div class="author-image">
+                                <img src="{{asset('site/assets/images/author-04.png')}}" alt="">
+                            </div>
+                            <div class="text-button-pay">
+                                <a href="#">Pay <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-05.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                            <div class="author-image">
+                                <img src="{{asset('site/assets/images/author-05.png')}}" alt="">
+                            </div>
+                            <div class="text-button-free">
+                                <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{asset('site/assets/images/courses-01.jpg')}}" alt="">
+                        <div class="down-content">
+                            <h4>Autre lien important</h4>
+                            <p>Autres contenus importants à afficher sur le site internet</p>
+                            <div class="author-image">
+                                <img src="{{asset('site/assets/images/author-01.png')}}" alt="">
+                            </div>
+                            <div class="text-button-pay">
+                                <a href="#">Afficher <i class="fa fa-angle-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="section video" data-section="section5">
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                    <div class="left-content">
+                        <span>Notre présentation</span>
+                        <h4>Régarder cette vidéo <em>à propos de la Grandeur</em></h4>
+                        <p>Tous les détails sont dans la vidéo pour vous permettre de mieux nous connaitre et de voir en visuel ce que nous faisons
+                        <br><br>Le complexe scolaire la Grandeur existe pour assurer une éducation de qualité à vos enfants!<em>Avec nous, plus besoin d'envoyer vos enfants à l'étranger pour les études de base</em></p>
+                        <div class="main-button"><a rel="nofollow" target="_parent">Visite guidée</a></div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <article class="video-item">
+                        <div class="video-caption">
+                        <h4>Cliquez ici</h4>
+                        </div>
+                        <figure>
+                        <a href="https://www.youtube.com/watch?v=r9LtOG6pNUw" class="play"><img src="{{asset('site/assets/images/main-thumb.png')}}"></a>
+                        </figure>
+                    </article>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <section class="section contact" data-section="section6">
+                <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Nous contacter</h2>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    
+                    <!-- Do you need a working HTML contact-form script?
+                                
+                                Please visit https://templatemo.com/contact page -->
+                                
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Votre nom" required="">
+                            </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                            <fieldset>
+                                <input name="email" type="text" class="form-control" id="email" placeholder="Votre email" required="">
+                            </fieldset>
+                            </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Votre message..." required=""></textarea>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                            <button type="submit" id="form-submit" class="button">Envoyer le message</button>
+                            </fieldset>
+                        </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="map">
+                            {# LA LOCALISATION GOOGLE #}
+                            <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen horver = "Notre localisation"></iframe>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+        {% endblock %}
+
+        {% block footer %}
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                <i class="fa fa-copyright"></i> Copyright 2024 by rainbowkay | Design: 
+                                <a href="#" rel="sponsored" target="_parent">ykk</a>
+                                <br>Distributed By: 
+                                <a href="#" rel="sponsored" target="_blank">rainbowkay</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+        <!-- Scripts -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{asset('site/vendor/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('site/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('site/assets/js/isotope.min.js')}}"></script>
+        <script src="{{asset('site/assets/js/owl-carousel.js')}}"></script>
+        <script src="{{asset('site/assets/js/lightbox.js')}}"></script>
+        <script src="{{asset('site/assets/js/tabs.js')}}"></script>
+        <script src="{{asset('site/assets/js/video.js')}}"></script>
+        <script src="{{asset('site/assets/js/slick-slider.js')}}"></script>
+        <script src="{{asset('site/assets/js/custom.js')}}"></script>
+        <script>
+            //according to loftblog tut
+            $('.nav li:first').addClass('active');
+
+            var showSection = function showSection(section, isAnimate) {
+            var
+            direction = section.replace(/#/, ''),
+            reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+            reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                scrollTop: reqSectionPos },
+                800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+            };
+
+            var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var
+                $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                var
+                currentId = $this.data('section'),
+                reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                reqLink.closest('li').addClass('active').
+                siblings().removeClass('active');
+                }
+            });
+            };
+
+            $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+            if($(e.target).hasClass('external')) {
+                return;
+            }
+            e.preventDefault();
+            $('#menu').removeClass('active');
+            showSection($(this).attr('href'), true);
+            });
+
+            $(window).scroll(function () {
+            checkSection();
+            });
+        </script>
+    </body>
+</html>

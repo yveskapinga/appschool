@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EleveController!{% endblock %}
+
+{% block body %}
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>sexe</th>
+                    <th>Adresse</th>
+                    <th>Tél</th>
+                    <th>Id. Nat.</th>
+                    <th>Classe</th>
+                    <th>Parent</th>
+                    <th>Paiement</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for eleve in eleves %}
+                    <tr>                    
+                        <td>{{eleve.prenom}}</td>
+                        <td>{{eleve.nom}}</td>
+                        <td>{{eleve.sexe}}</td>
+                        <td>{{eleve.adresse}}</td>
+                        <td>{{eleve.numeroTelephone}}</td>
+                        <td>{{eleve.identificationNationale}}</td>
+                        <td>{{eleve.classe}}</td>
+                        <td>{{eleve.parents}}</td>
+                        <td>{% for paiement in eleve.paiements %}
+                                {{paiement.status}}
+                            {% endfor %}</td> 
+                    </tr>
+                  {% endfor %}
+                </tbody>
+                </table>
+
+{# {% for eleve in eleves %}
+    <p>{{eleve.nom}}-{{eleve.nom}}, né le {{eleve.dateDeNaissance|date('y-m-d')}} et inscrit le {{eleve.createdAt |date('y-m-d')}} est de sexe {{eleve.sexe}} </p>
+{% endfor %} #}
+{% endblock %}
