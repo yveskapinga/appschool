@@ -219,15 +219,19 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Prenom et nom </h6>
-                            <span>Fonction</span>
+                            <h6>
+                                {% if app.user is defined %}
+                                    Bonjour, {{ app.user.prenom }} {{ app.user.nom }} !
+                                {% endif %}
+                            </h6>
+                            <span>{{ app.user.roles[0] }}</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="Le lien vers le profil">
+                            <a class="dropdown-item d-flex align-items-center" href="Le lien vers le profil"><!-- Le lien vers la page de profil -->
                                 <i class="bi bi-person"></i>
                                 <span>Le profile</span>
                             </a>
@@ -320,32 +324,47 @@
                             <i class="bi bi-circle"></i><span>Créer un élève</span>
                             </a>
                         </li>
-                       <li>
-                            <a href="components-buttons.html">
-                            <i class="bi bi-circle"></i><span>Buttons</span>
+                       <li class="nav-item">
+                            <!-- Le code que j'ai ajouté le 27 juin 2024 -->
+                            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                                <i class="bi bi-circle"></i>
+                                <span>Scolarité</span>
+                                <i class="bi bi-chevron-down ms-auto"></i>
                             </a>
+                            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="{{path('#')}}">
+                                        <i class="bi bi-circle"></i><span>Liste de présence</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{path('#')}}">
+                                        <i class="bi bi-circle"></i><span>Cahier de l'élève</span>
+                                    </a>
+                                </li>
+                            </lu>
                         </li>
                         <li>
                             <a href="components-cards.html">
-                            <i class="bi bi-circle"></i><span>Cards</span>
+                            <i class="bi bi-circle"></i><span>Communication</span>
                             </a>
                         </li>
-                        {#<li>
+                        <li>
                             <a href="components-carousel.html">
-                            <i class="bi bi-circle"></i><span>Carousel</span>
+                            <i class="bi bi-circle"></i><span>Ressources humaines</span>
                             </a>
                         </li>
                         <li>
                             <a href="components-list-group.html">
-                            <i class="bi bi-circle"></i><span>List group</span>
+                            <i class="bi bi-circle"></i><span>Documents</span>
                             </a>
                         </li>
                         <li>
                             <a href="components-modal.html">
-                            <i class="bi bi-circle"></i><span>Modal</span>
+                            <i class="bi bi-circle"></i><span>Portai utilisateur</span>
                             </a>
                         </li>
-                        <li>
+                        {#<li>
                             <a href="components-tabs.html">
                             <i class="bi bi-circle"></i><span>Tabs</span>
                             </a>
@@ -535,12 +554,76 @@
                 </nav>
             </div><!-- End Page Title -->
 
+            <!-- Partie ajoutée le 27 juin 2024 -->
+
+                <body>
+                    <nav>
+                        <header id="nav-header"></header>
+                        <ul id="submenu" class="dropdown-menu"></ul>
+                    </nav>
+                    <main id="main-content">
+                        <div class="row" id="menu-cards">
+                            {% set menus = {
+                                'MENU 1': {
+                                    'SUBMENU 1': {'SUBMENU1.menu 1': 'controller1', 'SUBMENU1.menu 2': 'controller2', 'SUBMENU1.menu 3': 'controller3'},
+                                    'SUBMENU 2': {'SUBMENU2.menu 1': 'controller4', 'SUBMENU2.menu 2': 'controller5'}
+                                }
+                                // Ajoutez d'autres menus ici
+                            } %}
+                            {% for menu, submenus in menus %}
+                                <div class="col-sm-4">
+                                    <a href="#" onclick="updateNav('{{ menu }}', '{{ submenus }}'); return false;" style="text-decoration: none; color: inherit;">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ menu }}</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </main>
+                    <script>
+                        function updateNav(menu, submenus) {
+                            document.getElementById('nav-header').innerText = menu;
+                            var submenuElement = document.getElementById('submenu');
+                            submenuElement.innerHTML = ''; // Effacer les anciens sous-menus
+                            for (var sub in submenus) {
+                                var li = document.createElement('li');
+                                li.className = 'dropdown-submenu';
+                                var a = document.createElement('a');
+                                a.href = '#';
+                                a.className = 'dropdown-toggle';
+                                a.setAttribute('data-toggle', 'dropdown');
+                                a.innerText = sub;
+                                li.appendChild(a);
+                                var ul = document.createElement('ul');
+                                ul.className = 'dropdown-menu';
+                                for (var item in submenus[sub]) {
+                                    var liItem = document.createElement('li');
+                                    var aItem = document.createElement('a');
+                                    aItem.href = submenus[sub][item]; // Remplacez ceci par le lien vers le contrôleur correspondant
+                                    aItem.innerText = item;
+                                    liItem.appendChild(aItem);
+                                    ul.appendChild(liItem);
+                                }
+                                li.appendChild(ul);
+                                submenuElement.appendChild(li);
+                            }
+                        }
+                    </script>
+                </body>
+
+
+            <!-- Fin Partie -->
+
             <section class="section dashboard">
 
                 {% block body %}
                     <img src="{{asset('assets/img/logoMS-big.png')}}" alt=""></img>
                     <h3>Bienvenu sur la plateforme <em>ManSchool</em></h3>
                     <h4>De gestion de votre école</h4>
+
                 {% endblock %}
             </section>
 

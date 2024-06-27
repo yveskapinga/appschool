@@ -1,0 +1,19 @@
+{# enseignants.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Enseignants de la classe{% endblock %}
+
+{% block body %}
+    <h1>Enseignants de la classe {{ classe.designation }}</h1>
+
+    <ul>
+    {% for enseignant in enseignants %}
+        <li>{{ enseignant.nom }}</li>
+    {% else %}
+        <li>Aucun enseignant n'a été assigné à cette classe.</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ path('classe_index') }}">Retour à la liste</a>
+{% endblock %}

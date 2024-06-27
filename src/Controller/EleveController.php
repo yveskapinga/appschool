@@ -26,7 +26,18 @@ class EleveController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eleve = new Eleve();
+        $parents = new Parents();
+        $eleve->setParents($parents);
+
         $form = $this->createForm(Eleve1Type::class, $eleve);
+
+                // Retirer les champs ici
+        $form->get('parents')->remove('password');
+        $form->get('parents')->remove('roles');
+        $form->get('parents')->remove('dateDeNaissance');
+        $form->get('parents')->remove('photo');
+        $form->get('parents')->remove('isVerified');
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
