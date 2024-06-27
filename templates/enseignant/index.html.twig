@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enseignant index{% endblock %}
+
+{% block body %}
+    <h1>Enseignant index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>DateDeNaissance</th>
+                <th>Sexe</th>
+                <th>Adresse</th>
+                <th>NumeroTelephone</th>
+                <th>Photo</th>
+                <th>IsVerified</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Fonction</th>
+                <th>Matricule</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enseignant in enseignants %}
+            <tr>
+                <td>{{ enseignant.id }}</td>
+                <td>{{ enseignant.email }}</td>
+                <td>{{ enseignant.roles ? enseignant.roles|json_encode : '' }}</td>
+                <td>{{ enseignant.prenom }}</td>
+                <td>{{ enseignant.nom }}</td>
+                <td>{{ enseignant.DateDeNaissance ? enseignant.DateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ enseignant.sexe }}</td>
+                <td>{{ enseignant.adresse }}</td>
+                <td>{{ enseignant.numeroTelephone }}</td>
+                <td>{{ enseignant.photo }}</td>
+                <td>{{ enseignant.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ enseignant.createdAt ? enseignant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ enseignant.updatedAt ? enseignant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ enseignant.fonction }}</td>
+                <td>{{ enseignant.matricule }}</td>
+                <td>
+                    <a href="{{ path('app_enseignant_show', {'id': enseignant.id}) }}">show</a>
+                    <a href="{{ path('app_enseignant_edit', {'id': enseignant.id}) }}">edit</a>
+                    <a href="{{ path('app_enseignant_edit', {'id': enseignant.id}) }}">assign class</a>
+                    <a href="{{ path('modifier_matiere', {'id': enseignant.id}) }}">assign course</a>
+                    <a href="{{ path('enseignant_retirer_classe', {'id': enseignant.id}) }}">assign course</a>
+                    <a href="{{ path('enseignant_historique_classe', {'id': enseignant.id}) }}">class historic</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_enseignant_new') }}">Create new</a>
+{% endblock %}

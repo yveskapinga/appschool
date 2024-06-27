@@ -306,7 +306,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{path('app_inscription_inscrire')}}">
+                            <a href="{{path('app_eleve_new')}}">
                             <i class="bi bi-circle"></i><span>Inscrire un élève</span>
                             </a>
                         </li>
@@ -376,23 +376,23 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-journal-text"></i>
-                        <span>Menu2</span>
+                        <span>Enseignant</span>
                         <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
-                            <i class="bi bi-circle"></i><span>Sous menu 1</span>
+                            <a href="{{path('app_enseignant_index')}}">
+                            <i class="bi bi-circle"></i><span>Tous les enseignants</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                            <i class="bi bi-circle"></i><span>Sous menu 2</span>
+                            <a href="{{path('app_enseignant_new')}}">
+                            <i class="bi bi-circle"></i><span>Ajouter un enseignant</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                            <i class="bi bi-circle"></i><span>Sous menu 3</span>
+                            <a href="{{('')}}">
+                            <i class="bi bi-circle"></i><span></span>
                             </a>
                         </li>
                         <li>
@@ -536,6 +536,17 @@
             </div><!-- End Page Title -->
 
             <section class="section dashboard">
+
+                    <div class="success-messages">
+                        {% for message in app.session.flashbag.get('success') %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    <div class="warning-messages">
+                        {% for message in app.session.flashbag.get('warning') %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>                    
 
                 {% block body %}
                     <img src="{{asset('assets/img/logoMS-big.png')}}" alt=""></img>

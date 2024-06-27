@@ -33,9 +33,9 @@ class EleveType extends AbstractType
                 // 'choice_label' => 'id',
                 'required' => false,
             ])
-            ->add('parents', EntityType::class, [
-                'class' => Parents::class,
-                // 'choice_label' => 'id',
+            ->add('parents', ParentsType::class, [
+                // 'class' => Parents::class,
+                // // 'choice_label' => 'id',
                 'required' => false,
             ])
             ->add('photo', FileType::class, [

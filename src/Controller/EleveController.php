@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Eleve;
 use App\Form\Eleve1Type;
+use App\Form\EleveType;
 use App\Repository\EleveRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,12 +27,13 @@ class EleveController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $eleve = new Eleve();
-        $form = $this->createForm(Eleve1Type::class, $eleve);
+        $form = $this->createForm(EleveType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($eleve);
-            $entityManager->flush();
+            dd($eleve);
+            // $entityManager->persist($eleve);
+            // $entityManager->flush();
 
             return $this->redirectToRoute('app_eleve_index', [], Response::HTTP_SEE_OTHER);
         }

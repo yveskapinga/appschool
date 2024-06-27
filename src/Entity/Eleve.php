@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EleveRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EleveRepository::class)]
@@ -16,7 +17,7 @@ class Eleve extends Utilisateur
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Classe $classe = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eleves')]
+    #[ORM\ManyToOne(inversedBy: 'eleves', cascade: ['persist'])]
     private ?Parents $parents = null;
 
     /**
@@ -99,5 +100,15 @@ class Eleve extends Utilisateur
     public function __toString()
     {
         return $this->getNom().' '.$this->getPrenom().''.$this->getClasse();
+    }
+
+    #[ORM\PreRemove]
+    public function preRemoveAction(EntityManagerInterface $em): void
+    {
+        $parent = $this->getParents();
+
+        if (count($parent->getEleves()) === 1) {
+            $em->remove($parent);
+        }
     }
 }
