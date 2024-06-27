@@ -17,7 +17,11 @@ class Eleve extends Utilisateur
     #[ORM\ManyToOne(inversedBy: 'eleves')]
     private ?Classe $classe = null;
 
+<<<<<<< HEAD
     #[ORM\ManyToOne(inversedBy: 'eleves', cascade: ['persist'])]
+=======
+    #[ORM\ManyToOne(inversedBy: 'eleves', cascade: ["persist"])]
+>>>>>>> ab957363ad7b49516ce7ae8d38ce1e848b12dc33
     private ?Parents $parents = null;
 
     /**

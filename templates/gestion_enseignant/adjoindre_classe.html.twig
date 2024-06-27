@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {# adjoindre_classe.html.twig #}
 
 {% extends 'base.html.twig' %}
@@ -16,3 +17,23 @@
 
     <a href="{{ path('enseignant_index') }}">Retour à la liste</a>
 {% endblock %}
+=======
+{# adjoindre_classe.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Adjoindre une classe{% endblock %}
+
+{% block body %}
+    <h1>Adjoindre une classe à un enseignant</h1>
+
+    <form method="post" action="{{ path('enseignant_adjoindre_classe', {'id': enseignant.id, 'classeId': form.vars.value.id}) }}">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Adjoindre') }}</button>
+        {{ form_end(form) }}
+    </form>
+
+    <a href="{{ path('enseignant_index') }}">Retour à la liste</a>
+{% endblock %}
+>>>>>>> ab957363ad7b49516ce7ae8d38ce1e848b12dc33

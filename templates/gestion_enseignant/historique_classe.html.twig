@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {# historique_classe.html.twig #}
 
 {% extends 'base.html.twig' %}
@@ -17,3 +18,24 @@
 
     <a href="{{ path('app_enseignant_index') }}">Retour à la liste</a>
 {% endblock %}
+=======
+{# historique_classe.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique des classes{% endblock %}
+
+{% block body %}
+    <h1>Historique des classes de {{ enseignant.nom }}</h1>
+
+    <ul>
+    {% for classe in classes %}
+        <li>{{ classe.designation }}</li>
+    {% else %}
+        <li>Aucune classe n'a été assignée à cet enseignant.</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ path('enseignant_index') }}">Retour à la liste</a>
+{% endblock %}
+>>>>>>> ab957363ad7b49516ce7ae8d38ce1e848b12dc33
