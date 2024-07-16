@@ -13,9 +13,6 @@ runtime:
 build:
     flavor: composer
 
-relationships:
-    database: "db:mysql"
-
 disk: 512
 
 web:
