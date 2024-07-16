@@ -9,12 +9,6 @@ runtime:
         - sodium
         - ctype
         - iconv
-        
-
-#variables:
-#    php:
-#        # uncomment on PHP 7.4+
-#        #opcache.preload: config/preload.php
 
 build:
     flavor: composer
@@ -28,15 +22,12 @@ web:
     locations:
         "/":
             root: "public"
-            index: "index.php"
+            index: ["index.php"]
             expires: 1h
             passthru: "/index.php"
 
-
-
 mounts:
     "/var": { source: local, source_path: var }
-    
 
 hooks:
     build: |

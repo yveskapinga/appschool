@@ -1,2 +1,8 @@
-"https://{www.rainbowkay.site}/": { type: upstream, upstream: "app:http" }
-"http://{rainbowkay.site}/": { type: redirect, to: "https://{www.rainbowkay.site}/" }
+"https://www.rainbowkay.site/":
+    type: upstream
+    upstream: "app:http"
+
+"http://rainbowkay.site/":
+    type: redirect
+    to: "https://www.rainbowkay.site/"
+
