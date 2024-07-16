@@ -1,0 +1,2 @@
+"https://{default}/": { type: upstream, upstream: "app:http" }
+"http://{rainbowkay.site}/": { type: redirect, to: "https://{www.rainbowkay.site}/" }
