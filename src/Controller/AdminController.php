@@ -22,7 +22,6 @@ use App\Service\SecurityService;
 use App\Service\UploaderService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Payum\Core\Payum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,9 +58,8 @@ class AdminController extends AbstractController
     }
 
     /**
-     * CRUD Elève
+     * CRUD Elève.
      */
-
     #[Route('/eleve/{id?0}/edit', name: 'edit_eleve')]
     public function updateEleve(Eleve $eleve = null, Request $req, UserPasswordHasherInterface $userPasswordHasher): Response
     {
@@ -133,9 +131,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    //Fin CRUD Elève
-
-
+    // Fin CRUD Elève
 
     #[Route('/enseignant', name: 'enseignants')]
     public function adminEnseignant(): Response
@@ -150,7 +146,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * CRUD Enseignant
+     * CRUD Enseignant.
      */
     #[Route('/enseignant/{id?0}/edit', name: 'edit_enseignant')]
     public function updateEnseignant(Enseignant $enseignant = null, Request $req): Response
@@ -221,7 +217,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * CRUD Classe
+     * CRUD Classe.
      */
     #[Route('/class/{id}/delete', name: 'delete_class')]
     public function deleteClasse(): Response
@@ -275,8 +271,6 @@ class AdminController extends AbstractController
             'classe' => $classe,
         ]);
     }
-
-
 
     /**
      * Affiche la fiche d'inscription pour un élève nouvellement inscrit.
@@ -344,51 +338,6 @@ class AdminController extends AbstractController
         ], 'reçu_'.$eleve->getNom().'-'.$eleve->getPrenom().'.pdf',
             'A6',
             'portrait');
-    }
-
-    #[Route('/online', name: 'online')]
-    public function actionEnregistrerPaiement(Request $request, Payum $payum): Response
-    {
-        // Vérifiez si l'utilisateur a les droits nécessaires.
-        // if (!$this->securityService->isAdmin()) {
-        //     throw $this->createAccessDeniedException();
-        // }
-        // Créez une nouvelle instance de Paiement.
-        $paiement = new Paiement();
-
-        // Créez un formulaire pour le paiement.
-        $form = $this->createForm(PaiementType::class, $paiement);
-
-        // Gérez la soumission du formulaire.
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Configurez le paiement avec Payum.
-            $gatewayName = 'paypal'; // ou 'visa', 'mobile_money', etc.
-            $storage = $payum->getStorage('App\Entity\Paiement');
-            $payment = $storage->create();
-            $payment->setNumber(uniqid());
-            $payment->setCurrencyCode('USD');
-            $payment->setTotalAmount($paiement->getMontant() * 100); // convertir en centimes
-            $payment->setDescription('Description du paiement');
-            $payment->setClientId($paiement->getEleve()->getId());
-            $payment->setClientEmail($paiement->getEleve()->getEmail());
-            $storage->update($payment);
-
-            // Créez un token de capture.
-            $captureToken = $payum->getTokenFactory()->createCaptureToken(
-                $gatewayName,
-                $payment,
-                'paiement_confirm' // la route vers laquelle rediriger après le paiement
-            );
-
-            // Redirigez vers la passerelle de paiement.
-            return $this->redirect($captureToken->getTargetUrl());
-        }
-
-        // Affichez le formulaire de paiement.
-        return $this->render('admin/paiement/enregistrer.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
