@@ -1,5 +1,6 @@
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+
+    # https://symfony.com/doc/current/security.html#registerings-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
@@ -21,6 +22,7 @@ security:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
+                # target: app_login
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -39,10 +41,19 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        # # code from bing july 5th
+        # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: ^/, roles: ROLE_USER }
 
 when@test:
     security:
-        password_hashers:
+        # Ajouté par bing le 5 juillet 2024
+        role_hierarchy:
+            ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+            ROLE_ADMIN: [ROLE_ENSEIGNANT]
+            ROLE_ENSEIGNANT: [ROLE_USER]
+            password_hashers:
+        #Fin du code
             # By default, password hashers are resource intensive and take time. This is
             # important to generate secure password hashes. In tests however, secure hashes
             # are not important, waste resources and increase test times. The following

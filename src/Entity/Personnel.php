@@ -42,4 +42,5 @@ class Personnel extends Utilisateur
 
         return $this;
     }
+
 }

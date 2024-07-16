@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="text-center">{{ classe.designation }}</h1>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Détails</h5>
+						<p><strong>Classe :</strong> {{ classe.classe }}</p>
+						<p><strong>Section :</strong> {{ classe.section }}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Professeur Principal</h5>
+						<p>{{ classe.professeurPrincipal.nom }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Enseignants</h5>
+						<ul>
+						{% for enseignant in classe.enseignants %}
+							<li>{{ enseignant.nom }}</li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Élèves</h5>
+						<p><strong>Filles :</strong> {{ classe.eleves|filter(eleve => eleve.sexe == 'F')|length }}</p>
+						<p><strong>Garçons :</strong> {{ classe.eleves|filter(eleve => eleve.sexe == 'M')|length }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

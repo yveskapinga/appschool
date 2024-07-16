@@ -1,0 +1,73 @@
+{# templates/inscription/fiche.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reçu de paiement</title>
+    <style>
+                    /* Ajoutez ici vos styles CSS */
+                    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="text-align: left;">
+            <img src="path/to/logo.png" alt="Logo de l'école">
+            <p>Adresse physique de l'école</p>
+            <p>Email de l'école</p>
+            <p>Site internet de l'école</p>
+            <p>Numéro de contact de l'école</p>
+        </div>
+        <div style="text-align: right;">
+            <p>Date du paiement : {{ "now"|date('Y-m-d') }}</p>
+        </div>
+    </header>
+
+    <h1 style="text-align: center;">Reçu de paiement</h1>
+
+    <h2>Informations sur l'élève</h2>
+    <p>Nom : {{ eleve.nom }}</p>
+    <p>Prénom : {{ eleve.prenom }}</p>
+    <p>Classe : {{ classe }}ème</p>
+    <p>Numéro d'identification : {{ eleve.identificationNationale }}</p>
+    <p>Montant : {{ paiement.montant }}</p>
+    <p>Mode de payement : {{ paiement.modePaiement }}</p>
+    <p>Statut : {{ paiement.status }}</p>
+    <p>Commentaire : {{ paiement.commentaire }}</p>
+
+    {# Ajoutez ici les autres informations sur l'élève... #}
+</body>
+</html>
+

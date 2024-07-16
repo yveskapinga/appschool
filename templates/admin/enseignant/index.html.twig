@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Liste des enseignant</h5>
+              <!-- Table with stripped rows -->
+            <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      Nom complet
+                    </th>
+                    <th>matricule</th>
+                    <th>sexe</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Date d'engagement</th>
+                    <th>Adresse</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for ens in enseignant %}
+                  <tr>
+                    <td>{{ens.prenom}} {{ens.nom}}</td>
+                    <td>{{ens.matricule}}</td>
+                    <td>{{ens.sexe}}</td>
+                    <td>{{ens.createdAt | date('d/m/yy')}}</td>
+                    <td>{{ens.adresse}}</td>
+                    <td>
+                        <a href="{{ path('edit_enseignant', {'id': ens.id}) }}" title="Modifier">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{{ path('delete_enseignant', {'id': ens.id}) }}" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        <a href="{{ path('show_enseignant', {'id': ens.id}) }}" title="Voir plus">
+                            <i class="fas fa-eye"></i>
+                        </a>                       
+                    </td>
+                  </tr>{% endfor %}
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+            <form action="{{ path('edit_enseignant') }}" method="post">
+                <input type="submit" class="btn btn-primary" value="Ajouter un enseignant">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

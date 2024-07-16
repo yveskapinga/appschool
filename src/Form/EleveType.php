@@ -7,6 +7,7 @@ use App\Entity\Eleve;
 use App\Entity\Parents;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,12 @@ class EleveType extends AbstractType
             ->add('dateDeNaissance', DateType::class, [
                 'widget' => 'single_text',
             ])
-            ->add('sexe')
+            ->add('sexe', ChoiceType::class, [
+                'mapped' => false,
+                'choices' => [
+                    'Masculin' => 'M',
+                    'Féminin' => 'F',
+                ], ])
             ->add('adresse')
             ->add('numeroTelephone')
             ->add('identificationNationale')
@@ -34,13 +40,8 @@ class EleveType extends AbstractType
                 'required' => false,
             ])
             ->add('parents', ParentsType::class, [
-<<<<<<< HEAD
                 // 'class' => Parents::class,
-                // // 'choice_label' => 'id',
-=======
-                //'class' => Parents::class,
                 // 'choice_label' => 'id',
->>>>>>> ab957363ad7b49516ce7ae8d38ce1e848b12dc33
                 'required' => false,
             ])
             ->add('photo', FileType::class, [

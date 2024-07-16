@@ -17,6 +17,25 @@ class HomeController extends AbstractController
     #[Route('/manschool', name: 'app_manschool')]
     public function app(): Response
     {
-        return $this->render('base.html.twig');
+        if ($this->isGranted('ROLE_USER')) {
+            // Utilisateur authentifié : redirige vers la route index
+            return $this->render('base.html.twig');
+        } else {
+            // Utilisateur non authentifié : redirige vers la route app_login
+            return $this->redirectToRoute('app_login');
+        }
+    }
+
+    // J'ai ajouté cette méthode qui dirige vers la page d'erreur 403
+    #[Route('/erreur-404', name: 'custom_error_page')]
+    public function error404(): Response
+    {
+        return $this->render('pages/error_page.html.twig');
+    }
+
+    #[Route('/under_building', name: 'under_building')]
+    public function construction(): Response
+    {
+        return $this->render('pages/under_construction.html.twig');
     }
 }

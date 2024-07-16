@@ -32,17 +32,34 @@ class PaiementRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p');
 
+        // Convertissez la date en format Y-m-d (année-mois-jour)
+        $startOfMonth = new \DateTime($annee.'-'.$mois.'-01');
+        $endOfMonth = clone $startOfMonth;
+        $endOfMonth->modify('+1 month');
+
         return $qb
             ->innerJoin('p.eleve', 'e')
-            ->where('MONTH(p.createdAt) = :mois')
-            ->andWhere('YEAR(p.createdAt) = :annee')
+            ->where('p.createdAt >= :start_date')
+            ->andWhere('p.createdAt < :end_date')
             ->andWhere('e.classe = :classe')
-            ->setParameter('mois', $mois)
-            ->setParameter('annee', $annee)
+            ->setParameter('start_date', $startOfMonth)
+            ->setParameter('end_date', $endOfMonth)
             ->setParameter('classe', $classe)
             ->orderBy('p.createdAt', 'DESC')
             ->getQuery()
             ->getResult();
+    }
+
+    // src/Repository/PaiementRepository.php
+
+    public function findDistinctMonthsAndYears()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('DISTINCT YEAR(p.createdAt) as year, MONTH(p.createdAt) as month')
+            ->orderBy('year', 'DESC')
+            ->addOrderBy('month', 'DESC');
+
+        return $qb->getQuery()->getResult();
     }
 
     //    /**

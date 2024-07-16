@@ -1,0 +1,38 @@
+{# templates/inscription/fiche.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fiche d'inscription</title>
+    <style>
+        /* Ajoutez ici vos styles CSS */
+    </style>
+</head>
+<body>
+    <header>
+        <div style="text-align: left;">
+            <img src="path/to/logo.png" alt="Logo de l'école">
+            <p>Adresse physique de l'école</p>
+            <p>Email de l'école</p>
+            <p>Site internet de l'école</p>
+            <p>Numéro de contact de l'école</p>
+        </div>
+        <div style="text-align: right;">
+            <p>Date du jour : {{ "now"|date('Y-m-d') }}</p>
+        </div>
+    </header>
+
+    <h1 style="text-align: center;">Fiche d'inscription</h1>
+
+    <h2>Informations sur l'élève</h2>
+    <p>Nom : {{ eleve.nom }}</p>
+    <p>Prénom : {{ eleve.prenom }}</p>
+    <p>Classe : {{ eleve.classe.niveau }}ème</p>
+    <p>Date de naissance : {{ eleve.dateDeNaissance|date('Y-m-d') }}</p>
+    <p>Numéro d'identification : {{ eleve.identificationNationale }}</p>
+    <p>Nom du parent : {{ eleve.parents }}</p>
+    <p>Date d'inscription : {{ eleve.createdAt|date('Y-m-d') }}</p>
+
+    {# Ajoutez ici les autres informations sur l'élève... #}
+</body>
+</html>

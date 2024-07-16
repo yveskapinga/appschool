@@ -1,0 +1,148 @@
+        <aside id="sidebar" class="sidebar">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link " href="{{path('app_manschool')}}"><!-- Ici on met le lien vers la page d'accueil -->
+                        <i class="bi bi-grid"></i>
+                        <span>Tableau de bord</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Administration</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{path('eleves')}}">
+                                <i class="bi bi-circle"></i><span>Liste des élèves</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('edit_eleve')}}">
+                            <i class="bi bi-circle"></i><span>Inscrire un élève</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('enseignants')}}">
+                            <i class="bi bi-circle"></i><span>Les enseignants</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Components Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                        <i class="fas fa-users"></i>
+                        <span>Portail utilisateur</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{path('app_register')}}">
+                                    <i class="bi bi-circle"></i><span>Créer un nouvel utilisateur</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{path('under_building')}}">
+                                <i class="bi bi-circle"></i><span>Espace enseignant</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                            <i class="bi bi-circle"></i><span>Espace parent</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                            <i class="bi bi-circle"></i><span>Espace élève</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                            <i class="bi bi-circle"></i><span>Direction et administration</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Forms Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                        <i class="fas fa-school"></i>
+                        <span>Vie scolaire</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-circle"></i><span>Fiche élève</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('classe')}}">
+                                <i class="bi bi-circle"></i><span>Gestion des classes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                                <i class="bi bi-circle"></i><span>Appel en classe</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                                <i class="bi bi-circle"></i><span>gestion des devoirs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                                <i class="bi bi-circle"></i><span>Gestion des examens</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Tables Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="fas fa-user-plus"></i><span>Gestion d'inscriptions</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{path('under_building')}}">
+                            <i class="bi bi-circle"></i><span>Demande d'adhésion</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('under_building')}}">
+                            <i class="bi bi-circle"></i><span>Inscrire élève</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Charts Nav -->
+                <!-- End Icons Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#chart-nav" data-bs-toggle="collapse" href="#">
+                    <i class="fas fa-money-bill-alt"></i><span>Paiment des frais</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="chart-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{path('payer')}}">
+                            <i class="bi bi-circle"></i><span>Payer les frais scolaires</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{path('report')}}">
+                            <i class="bi bi-circle"></i><span>Elèves en ordre</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Charts Nav -->
+                <!-- End Icons Nav -->
+            </ul>
+
+        </aside>

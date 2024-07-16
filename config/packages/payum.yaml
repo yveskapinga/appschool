@@ -13,5 +13,9 @@ payum:
                     id_property: hash
 
     gateways:
-        offline:
-            factory: offline
+        paypal:
+            factory: paypal_express_checkout
+            username:  'your_paypal_username'
+            password:  'your_paypal_password'
+            signature: 'your_paypal_signature'
+            sandbox: true

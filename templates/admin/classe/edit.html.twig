@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New classroom{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+
+{{ form_row(form.classe) }}
+{{ form_row(form.designation) }}
+{{ form_row(form.enseignants) }}
+{{ form_row(form.professeurPrincipal) }}
+{# <select name="monChamp">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option>
+</select> #}
+{{ form_end(form) }}
+{% endblock %}

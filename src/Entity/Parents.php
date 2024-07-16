@@ -55,4 +55,5 @@ class Parents extends Utilisateur
     {
         return $this->getPrenom().'-'.$this->getNom();
     }
+
 }

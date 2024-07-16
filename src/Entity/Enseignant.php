@@ -27,6 +27,7 @@ class Enseignant extends Personnel
         $this->matieres = new ArrayCollection();
         $this->classes = new ArrayCollection();
     }
+
     /**
      * @return Collection<int, Matiere>
      */
@@ -73,5 +74,10 @@ class Enseignant extends Personnel
         $this->classes->removeElement($class);
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getPrenom().' '.$this->getNom();
     }
 }

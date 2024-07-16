@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les classes{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Les salles de classes</h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>Classe</th>
+                    <th>Section</th>
+                    <th>Salle</th>
+					<th>Enseignants</th>
+					<th>Titulaire</th>
+					<th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for classroom in classe %}
+                  <tr>
+                    <td>{{classroom.classe}}e année</td>
+                    <td>{{classroom.section}}</td>
+					<td>{{classroom.designation}}</td>
+					<td>{% for prof in classroom.enseignants %}
+							<li>{{prof.prenom}} {{prof.nom}}</li>
+						{% endfor %}
+					</td>
+					<td>{{classroom.professeurPrincipal}}</td>
+                    <td>
+                        <a href="{{path('edit_class', {'id': classroom.id})}}" title="Modifier">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="#" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        <a href="#" title="Voir plus">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                  </tr>{% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+{% endblock %}

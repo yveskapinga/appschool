@@ -1,0 +1,32 @@
+<div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      Nom complet
+                    </th>
+                    <th>Classe</th>
+                    <th>sexe</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Date d'inscription</th>
+                    <th>Age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{eleve.prenom}} {{eleve.nom}}</td>
+                    <td>9958</td>
+                    <td>{{eleve.sexe}}</td>
+                    <td>{{eleve.createdAt}}</td>
+                    <td>{{date().diff(eleve.dateDeNaissance).y}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>

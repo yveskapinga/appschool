@@ -1,0 +1,55 @@
+{# templates/admin/paiement/rapport.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rapport de Paiements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rapport de Paiements</h1>
+    <p>Classe: {{ classe.designation }}</p>
+    <p>Mois: {{ mois }} / Année: {{ annee }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Montant</th>
+                <th>Mode de Paiement</th>
+                <th>Élève</th>
+                <th>Status</th>
+                <th>Commentaire</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paiement in paiements %}
+                <tr>
+                    <td>{{ paiement.id }}</td>
+                    <td>{{ paiement.montant }}</td>
+                    <td>{{ paiement.modePaiement }}</td>
+                    <td>{{ paiement.eleve.nom }}</td>
+                    <td>{{ paiement.status }}</td>
+                    <td>{{ paiement.commentaire }}</td>
+                    <td>{{ paiement.createdAt|date('d-m-Y') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

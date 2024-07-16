@@ -49,7 +49,11 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
+        // $this->addFlash(
+        //     'success', // Le type de message
+        //     "Connexion effectuée" // Le message
+        // );
+        return new RedirectResponse($this->urlGenerator->generate('app_manschool'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

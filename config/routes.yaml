@@ -1,10 +1,13 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
 # config/routes.yaml
 home:
-    path: /
-    controller: App\Controller\HomeController::index
+  path: /
+  controller: App\Controller\HomeController::index
 
+error_404:
+  path: /erreur-404
+  controller: App\Controller\HomeController::error404

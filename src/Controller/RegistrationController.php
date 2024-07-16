@@ -54,6 +54,11 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
+            $this->addFlash(
+                'success', // Le type de message
+                "Enregistrement fait avec succès" // Le message
+            );
+
             return $security->login($user, AppAuthenticator::class, 'main');
         }
 

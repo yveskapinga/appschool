@@ -22,9 +22,6 @@ class Classe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $designation = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $niveau = null;
-
     /**
      * @var Collection<int, Eleve>
      */
@@ -39,6 +36,12 @@ class Classe
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Enseignant $professeurPrincipal = null;
+
+    #[ORM\Column]
+    private ?int $classe = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $section = null;
 
     public function __construct()
     {
@@ -59,18 +62,6 @@ class Classe
     public function setDesignation(?string $designation): static
     {
         $this->designation = $designation;
-
-        return $this;
-    }
-
-    public function getNiveau(): ?string
-    {
-        return $this->niveau;
-    }
-
-    public function setNiveau(string $niveau): static
-    {
-        $this->niveau = $niveau;
 
         return $this;
     }
@@ -146,6 +137,30 @@ class Classe
 
     public function __toString()
     {
-        return $this->getNiveau().'e '.$this->getDesignation();
+        return $this->getclasse().'e '.$this->getSection().' '.$this->getDesignation(); // $this->getProfesseurPrincipal()->getNom();
+    }
+
+    public function getclasse(): ?int
+    {
+        return $this->classe;
+    }
+
+    public function setclasse(int $classe): static
+    {
+        $this->classe = $classe;
+
+        return $this;
+    }
+
+    public function getSection(): ?string
+    {
+        return $this->section;
+    }
+
+    public function setSection(string $section): static
+    {
+        $this->section = $section;
+
+        return $this;
     }
 }
