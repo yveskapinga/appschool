@@ -47,6 +47,42 @@
               <!-- End Table with stripped rows -->
 
             </div>
-          </div>
+    </div>
+
+    {# templates/classe/index.html.twig #}
+
+{#     <nav>
+        <ul class="nav">
+            {% for classe in classes %}
+                <li class="classe-item" data-classe-id="{{ classe.id }}">
+                    <a href="#">
+                        {{ classe.name }}
+                    </a>
+                    <ul class="eleve-list" style="display: none;">
+                        {% for eleve in classe.eleves %}
+                            <li>{{ eleve.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <script>
+        document.querySelectorAll('.classe-item').forEach(function(item) {
+            item.querySelector('a').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelectorAll('.classe-item').forEach(function(otherItem) {
+                    otherItem.classList.remove('highlight');
+                    otherItem.querySelector('.eleve-list').style.display = 'none';
+                });
+
+                item.classList.add('highlight');
+                item.querySelector('.eleve-list').style.display = 'block';
+            });
+        });
+    </script>
+ #}
 
 {% endblock %}
